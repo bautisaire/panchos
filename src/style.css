@@ -349,3 +349,38 @@
 .track-meta .chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .track-meta .chip b{font-size:16px;font-weight:800}
 .track-info .steps{position:relative;z-index:1}
+
+/* Adaptación a celular: paneles, mapas, burbujas y botones flotantes. */
+.locate{height:100dvh;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.admin-fab{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}
+.track-fab{left:max(14px,env(safe-area-inset-left));bottom:max(14px,env(safe-area-inset-bottom))}
+@media(max-width:760px){
+  .admin{width:94vw;max-height:94dvh;padding:16px}
+  .admin[open]{display:block;overflow:auto}
+  .admin-body{overflow:visible;padding-right:0}
+  .admin-local .map{height:200px}
+  .admin-local.full{padding:max(14px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom))}
+  .admin-row{padding:12px 0}
+  .admin-reset{padding:12px 10px}
+  .locate h2,.admin-head h2{font-size:19px}
+  .locate .admin-hint{font-size:11px;margin:4px 0 8px}
+  .locate-actions{gap:8px;margin-top:10px}
+  .locate-actions .admin-reset{padding:14px 10px;font-size:12px;line-height:1.2;max-width:96px}
+  .locate-actions .primary{min-width:0;padding:14px 12px;font-size:15px;gap:8px}
+  .route-info{bottom:20px;padding:10px 14px;gap:4px 12px;font-size:13px;border-radius:16px;max-width:calc(100% - 20px)}
+  .route-info .chip b{font-size:15px}
+  .track-info{gap:8px}
+  .steps{gap:5px}
+  .step-chip{font-size:11px;padding:4px 8px}
+  .track-meta{gap:4px 12px}
+  .track-meta .chip b{font-size:14px}
+  .track-fab{padding:11px 14px;font-size:14px}
+  .track-fab small{display:none}
+  .admin-fab{width:40px;height:40px}
+  .leaflet-control-zoom a{width:34px;height:34px;line-height:34px}
+}
+@media(max-width:360px){.locate-actions .admin-reset{display:none}.step-chip i{display:none}}
+.route-info{width:max-content}
+@media(max-width:760px){.route-info{padding:10px 12px;gap:4px 8px;font-size:12px}.route-info .chip{gap:4px}.route-info .chip b{font-size:14px}}
+@media(max-width:760px){.step-chip i{display:none}.step-chip{padding:4px 7px;font-size:11px}.steps{gap:4px;flex-wrap:nowrap}.track-meta{gap:4px 10px}.track-meta .chip b{font-size:13px}.track-meta .chip{gap:3px}}
+@media(max-width:760px){body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}}
