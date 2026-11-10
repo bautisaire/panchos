@@ -60,7 +60,7 @@ const cur = () => panchos[selectedIdx];
 let selectedDrink: string | null = null;
 const app = document.querySelector<HTMLDivElement>('#app')!;
 app.innerHTML = `
-  <header class="header"><a class="brand" href="#" aria-label="Flama, inicio"><img class="brand-logo" src="/flama-logo.png" alt="" width="50" height="50"/>flama</a><span class="header-note">SIMPLE · RICO · BARATO</span></header>
+  <header class="header"><a class="brand" href="#" aria-label="Flama, inicio"><img class="brand-logo" src="/flama-logo.png" alt="" width="50" height="50"/>flama</a><span class="header-note">Simple · Rico · Barato</span></header>
   <main>
     <section class="home" id="home" aria-label="Elegí tu producto">
       <div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Productos" tabindex="0">
@@ -73,11 +73,11 @@ app.innerHTML = `
     </section>
     <section class="builder" id="builder" hidden aria-labelledby="builder-title">
       <button class="back" id="back">← Volver al menú</button>
-      <div class="builder-layout"><div class="builder-preview"><span class="eyebrow">EL CLÁSICO · A TU MANERA</span><h1 id="builder-title" tabindex="-1">Dale tu <br><em>toque.</em></h1><div class="pancho-composition">${drinks.map(d => `<img class="drink-layer" data-drink="${d.id}" src="${d.image}" alt="" aria-hidden="true" draggable="false" hidden/>`).join('')}${dressings.map(d => Array.from({ length: MAX_DRESSING }, (_, j) => `<img class="sachet-layer" data-sachet="${d.id}" data-copy="${j}" src="${d.sachet}" alt="" aria-hidden="true" draggable="false" hidden/>`).join('')).join('')}</div><div class="pancho-tabs" id="pancho-tabs" role="group" aria-label="Panchos del pedido"></div><div class="preview-caption"><span>La base está.<br><strong>La magia la ponés vos.</strong></span><span aria-hidden="true">✳</span></div></div>
+      <div class="builder-layout"><div class="builder-preview"><span class="eyebrow">El clásico · a tu manera</span><h1 id="builder-title" tabindex="-1">Dale tu <br><em>toque.</em></h1><div class="pancho-composition">${drinks.map(d => `<img class="drink-layer" data-drink="${d.id}" src="${d.image}" alt="" aria-hidden="true" draggable="false" hidden/>`).join('')}${dressings.map(d => Array.from({ length: MAX_DRESSING }, (_, j) => `<img class="sachet-layer" data-sachet="${d.id}" data-copy="${j}" src="${d.sachet}" alt="" aria-hidden="true" draggable="false" hidden/>`).join('')).join('')}</div><div class="pancho-tabs" id="pancho-tabs" role="group" aria-label="Panchos del pedido"></div><div class="preview-caption"><span>La base está.<br><strong>La magia la ponés vos.</strong></span><span aria-hidden="true">✳</span></div></div>
       <div class="options-panel"><fieldset id="sauce-fieldset"><legend><span class="step">01</span> <span id="sauce-title">Elegí tus salsas</span> <span class="counter" id="sauce-counter">0 / 2</span></legend><p class="hint" id="sauce-hint" aria-live="polite">Podés elegir hasta 2. También vale sin salsa.</p><div class="sauce-grid">${sauces.map(o => option(o, 'sauce')).join('')}</div></fieldset>
       <fieldset><legend><span class="step">02</span> Sumá aderezos <span class="counter">hasta 5 de cada uno</span></legend><p class="hint hint-more">Valen para todo el pedido.</p><div class="dressing-grid">${dressings.map(stepper).join('')}</div></fieldset>
       <fieldset><legend><span class="step">03</span> Sumá una gaseosa <span class="counter" id="drink-counter">0 / 1</span></legend><p class="hint hint-more">Una para todo el pedido. Mirá cómo cae detrás.</p><div class="drink-grid">${drinks.map(o => option(o, 'drink')).join('')}</div></fieldset>
-      <div class="summary"><span class="eyebrow">TU COMBINACIÓN</span><p id="combination" aria-live="polite">El clásico, así de simple.</p></div><button class="primary finish" id="finish">Listo, así me gusta <span aria-hidden="true">✓</span></button><p class="local-note">Por ahora, probá tu combinación. Los pedidos llegan pronto.</p><div id="confirmation" class="confirmation" role="status" hidden></div></div></div>
+      <div class="summary"><span class="eyebrow">Tu combinación</span><p id="combination" aria-live="polite">El clásico, así de simple.</p></div><button class="primary finish" id="finish">Listo, así me gusta <span aria-hidden="true">✓</span></button><p class="local-note">Por ahora, probá tu combinación. Los pedidos llegan pronto.</p><div id="confirmation" class="confirmation" role="status" hidden></div></div></div>
     </section>
     <section class="order-flow" id="order-flow" hidden aria-label="Finalizar pedido">
       <p class="order-status" role="status" tabindex="-1">Preparando tu pedido…</p>
@@ -194,7 +194,7 @@ function showBuilder(show: boolean) {
   cancelOrderAnimation();
   if (show) {
     panchos.forEach(p => { p.el.querySelector<HTMLImageElement>('.pancho-base')!.src = products[current].image; });
-    document.querySelector('.builder-preview .eyebrow')!.textContent = products[current].name.toUpperCase();
+    document.querySelector('.builder-preview .eyebrow')!.textContent = products[current].name;
     refreshPanchos();
     updateSachets(false);
     updateDrinks(false);
